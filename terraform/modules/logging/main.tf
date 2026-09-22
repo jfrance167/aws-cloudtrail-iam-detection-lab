@@ -13,6 +13,9 @@ locals {
   bucket_name    = "${var.name_prefix}-logs-${substr(sha256(local.account_id), 0, 12)}-${local.region}"
 }
 
+# checkov:skip=CKV_AWS_356:AWS KMS key policies require Resource "*" to mean only the key carrying the policy.
+# checkov:skip=CKV_AWS_109:The account-root delegation statement enables IAM administration of this one KMS key.
+# checkov:skip=CKV_AWS_111:Service write actions are constrained by service principals, source account/ARN, and encryption context.
 data "aws_iam_policy_document" "kms" {
   statement {
     sid    = "EnableAccountAdministration"
@@ -103,6 +106,9 @@ resource "aws_kms_alias" "lab" {
   target_key_id = aws_kms_key.lab.key_id
 }
 
+# checkov:skip=CKV_AWS_144:Cross-Region replication is intentionally excluded from this low-cost single-account lab.
+# checkov:skip=CKV_AWS_18:A separate access-log bucket would add recursive storage and cost; management access is captured by CloudTrail.
+# checkov:skip=CKV2_AWS_62:S3 event notifications are not part of the control-plane detection objective.
 resource "aws_s3_bucket" "archive" {
   bucket        = local.bucket_name
   force_destroy = var.force_destroy
@@ -154,6 +160,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "archive" {
     }
     noncurrent_version_expiration {
       noncurrent_days = var.archive_retention_days
+    }
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
     }
   }
 
@@ -220,6 +229,7 @@ resource "aws_s3_bucket_policy" "archive" {
   policy = data.aws_iam_policy_document.archive.json
 }
 
+# checkov:skip=CKV_AWS_338:Fourteen-day default retention is deliberate for a low-cost ephemeral lab; S3 retains logs longer.
 resource "aws_cloudwatch_log_group" "cloudtrail" {
   name              = local.log_group_name
   retention_in_days = var.cloudwatch_retention_days
@@ -259,6 +269,7 @@ resource "aws_iam_role_policy" "cloudtrail_logs" {
   policy = data.aws_iam_policy_document.cloudtrail_logs.json
 }
 
+# checkov:skip=CKV_AWS_252:EventBridge and CloudWatch detections publish to SNS; per-log-file CloudTrail SNS notices add noise without detection value.
 resource "aws_cloudtrail" "lab" {
   name                          = local.trail_name
   s3_bucket_name                = aws_s3_bucket.archive.id
@@ -283,4 +294,3 @@ resource "aws_cloudtrail" "lab" {
     aws_s3_bucket_server_side_encryption_configuration.archive
   ]
 }
-

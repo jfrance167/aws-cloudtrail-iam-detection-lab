@@ -32,6 +32,9 @@ locals {
   ]
 }
 
+# checkov:skip=CKV_AWS_144:Cross-Region replication is intentionally excluded from this low-cost disposable results bucket.
+# checkov:skip=CKV_AWS_18:Query results are short-lived; a separate access-log bucket is disproportionate for the lab.
+# checkov:skip=CKV2_AWS_62:S3 event notifications are outside the investigation-query objective.
 resource "aws_s3_bucket" "results" {
   bucket        = local.bucket_name
   force_destroy = var.force_destroy
@@ -82,6 +85,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "results" {
     }
     noncurrent_version_expiration {
       noncurrent_days = var.query_result_retention_days
+    }
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
     }
   }
   depends_on = [aws_s3_bucket_versioning.results]
