@@ -1,0 +1,15 @@
+flowchart LR
+    O[Authorized operator] -->|AssumeRole + MFA| R[Restricted sandbox role]
+    R -->|Permitted and denied API calls| C[CloudTrail]
+    C -->|SSE-KMS + validation| S[(Private S3 archive)]
+    C -->|Encrypted delivery| L[CloudWatch Logs]
+    L --> F[AccessDenied metric filter]
+    F --> A[5-minute threshold alarm]
+    C -. AWS management events .-> E[EventBridge rules]
+    E --> N[Encrypted SNS topic]
+    A --> N
+    S --> G[Glue projected table]
+    G --> Q[Athena workgroup]
+    Q --> X[(Encrypted result bucket)]
+    B[AWS Budget] --> N
+

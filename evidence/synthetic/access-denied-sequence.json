@@ -1,0 +1,30 @@
+[
+  {
+    "eventTime": "2026-01-15T14:02:00Z",
+    "eventSource": "iam.amazonaws.com",
+    "eventName": "ListUsers",
+    "sourceIPAddress": "198.51.100.24",
+    "errorCode": "AccessDenied",
+    "userIdentity": {"sessionContext": {"sessionIssuer": {"userName": "aws-detection-lab-sandbox"}}},
+    "synthetic": true
+  },
+  {
+    "eventTime": "2026-01-15T14:03:00Z",
+    "eventSource": "iam.amazonaws.com",
+    "eventName": "ListRoles",
+    "sourceIPAddress": "198.51.100.24",
+    "errorCode": "AccessDeniedException",
+    "userIdentity": {"sessionContext": {"sessionIssuer": {"userName": "aws-detection-lab-sandbox"}}},
+    "synthetic": true
+  },
+  {
+    "eventTime": "2026-01-15T14:04:00Z",
+    "eventSource": "iam.amazonaws.com",
+    "eventName": "GetAccountAuthorizationDetails",
+    "sourceIPAddress": "198.51.100.24",
+    "errorCode": "AccessDenied",
+    "userIdentity": {"sessionContext": {"sessionIssuer": {"userName": "aws-detection-lab-sandbox"}}},
+    "synthetic": true
+  }
+]
+

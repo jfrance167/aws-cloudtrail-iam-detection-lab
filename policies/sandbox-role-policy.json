@@ -1,0 +1,32 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadOnlySelfInspection",
+      "Effect": "Allow",
+      "Action": ["iam:GetRole", "iam:ListAttachedRolePolicies", "iam:ListRolePolicies"],
+      "Resource": "arn:aws:iam::<ACCOUNT_ID>:role/aws-detection-lab-sandbox"
+    },
+    {
+      "Sid": "LookupRecentEvents",
+      "Effect": "Allow",
+      "Action": "cloudtrail:LookupEvents",
+      "Resource": "*"
+    },
+    {
+      "Sid": "DenyUnsafeLabActions",
+      "Effect": "Deny",
+      "Action": [
+        "cloudtrail:DeleteTrail",
+        "cloudtrail:StopLogging",
+        "cloudtrail:UpdateTrail",
+        "iam:AttachGroupPolicy",
+        "iam:AttachRolePolicy",
+        "iam:AttachUserPolicy",
+        "iam:CreateAccessKey"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+

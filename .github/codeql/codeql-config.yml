@@ -1,0 +1,4 @@
+name: AWS CloudTrail lab CodeQL configuration
+
+paths:
+  - "**/*.py"

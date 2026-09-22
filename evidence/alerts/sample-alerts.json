@@ -1,0 +1,33 @@
+[
+  {
+    "detection_id": "AWS-CT-003",
+    "title": "Synthetic IAM access key creation",
+    "time": "2026-01-15T14:07:00Z",
+    "principal": "arn:aws:sts::<ACCOUNT_ID>:assumed-role/<ROLE_NAME>/<SESSION_NAME>",
+    "source_ip": "198.51.100.24",
+    "event_name": "CreateAccessKey",
+    "target": "<TARGET_USER>",
+    "validation": "synthetic"
+  },
+  {
+    "detection_id": "AWS-CT-004",
+    "title": "Synthetic privileged policy attachment",
+    "time": "2026-01-15T14:08:00Z",
+    "principal": "arn:aws:sts::<ACCOUNT_ID>:assumed-role/<ROLE_NAME>/<SESSION_NAME>",
+    "source_ip": "198.51.100.24",
+    "event_name": "AttachRolePolicy",
+    "target": "<TARGET_ROLE>",
+    "validation": "synthetic"
+  },
+  {
+    "detection_id": "AWS-CT-005",
+    "title": "Synthetic repeated denied sandbox activity",
+    "time": "2026-01-15T14:04:00Z",
+    "principal": "arn:aws:sts::<ACCOUNT_ID>:assumed-role/aws-detection-lab-sandbox/<SESSION_NAME>",
+    "source_ip": "198.51.100.24",
+    "threshold": 3,
+    "period_seconds": 300,
+    "validation": "synthetic"
+  }
+]
+

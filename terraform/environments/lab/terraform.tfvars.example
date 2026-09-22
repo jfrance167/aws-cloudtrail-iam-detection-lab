@@ -1,0 +1,15 @@
+# Copy this file outside the repository or pass values through TF_VAR_*.
+# Never replace placeholders in a file that will be committed.
+
+aws_region                    = "us-east-1"
+name_prefix                   = "aws-detection-lab"
+sandbox_trusted_principal_arn = "arn:aws:iam::<ACCOUNT_ID>:user/<SANDBOX_OPERATOR>"
+require_mfa                   = true
+monthly_budget_usd            = 5
+cloudwatch_retention_days     = 14
+archive_retention_days        = 90
+force_destroy                 = false
+
+# Prefer: $env:TF_VAR_alert_email = "<PRIVATE_EMAIL>"
+# alert_email = "<PRIVATE_EMAIL>"
+

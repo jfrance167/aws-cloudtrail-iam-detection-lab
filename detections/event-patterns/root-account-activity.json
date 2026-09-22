@@ -1,0 +1,10 @@
+{
+  "source": ["aws.signin", "aws.iam", "aws.sts"],
+  "detail-type": ["AWS Console Sign In via CloudTrail", "AWS API Call via CloudTrail"],
+  "detail": {
+    "userIdentity": {
+      "type": ["Root"]
+    }
+  }
+}
+

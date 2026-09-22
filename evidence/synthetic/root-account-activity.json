@@ -1,0 +1,22 @@
+{
+  "version": "0",
+  "id": "<SYNTHETIC_EVENT_ID>",
+  "detail-type": "AWS Console Sign In via CloudTrail",
+  "source": "aws.signin",
+  "account": "<ACCOUNT_ID>",
+  "time": "2026-01-15T14:00:00Z",
+  "region": "us-east-1",
+  "resources": [],
+  "detail": {
+    "eventVersion": "1.11",
+    "userIdentity": {"type": "Root", "accountId": "<ACCOUNT_ID>"},
+    "eventTime": "2026-01-15T14:00:00Z",
+    "eventSource": "signin.amazonaws.com",
+    "eventName": "ConsoleLogin",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.10",
+    "responseElements": {"ConsoleLogin": "Success"}
+  },
+  "synthetic": true
+}
+
