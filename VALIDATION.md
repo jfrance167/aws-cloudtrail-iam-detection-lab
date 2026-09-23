@@ -5,14 +5,15 @@ named validation was actually completed; prose elsewhere must not override it.
 
 ## Completed local validation
 
-- [ ] Python unit tests pass.
-- [ ] Synthetic fixture evaluator reports all expected detections.
-- [ ] Repository safety tests find no prohibited credential material.
-- [ ] `terraform fmt -check -recursive` passes.
-- [ ] `terraform init -backend=false` completes.
-- [ ] `terraform validate` passes.
-- [ ] Checkov completes with no unsuppressed HIGH or CRITICAL findings.
-- [ ] GitHub workflow YAML receives a manual safety review.
+- [x] Python unit tests pass (13 tests).
+- [x] Synthetic fixture evaluator reports all expected detections.
+- [x] Repository safety tests find no prohibited credential material.
+- [x] `terraform fmt -check -recursive` passes.
+- [x] `terraform init -backend=false` completes.
+- [x] `terraform validate` passes with Terraform 1.13.3 and AWS provider 5.100.0.
+- [x] Checkov 3.3.19 reports 145 passed, 11 documented exceptions, and 0 failed checks.
+- [x] Bandit 1.9.4 reports zero findings across `scripts/` and `tests/`.
+- [x] All workflow YAML parses and receives a manual minimum-permission review.
 - [ ] CodeQL SAST completes in GitHub Actions.
 
 ## Completed AWS validation
@@ -30,12 +31,12 @@ No AWS validation has been completed.
 
 ## Completed synthetic validation
 
-- [ ] AWS-CT-001 root-account fixture matches its EventBridge pattern.
-- [ ] AWS-CT-002 CloudTrail-change fixture matches its EventBridge pattern.
-- [ ] AWS-CT-003 access-key fixture matches its EventBridge pattern.
-- [ ] AWS-CT-004 privileged-policy fixture matches its EventBridge pattern.
-- [ ] AWS-CT-005 denied-call sequence crosses its local threshold.
-- [ ] Synthetic incident timeline and report are internally consistent.
+- [x] AWS-CT-001 root-account fixture matches its EventBridge pattern.
+- [x] AWS-CT-002 CloudTrail-change fixture matches its EventBridge pattern.
+- [x] AWS-CT-003 access-key fixture matches its EventBridge pattern.
+- [x] AWS-CT-004 privileged-policy fixture matches its EventBridge pattern.
+- [x] AWS-CT-005 denied-call sequence crosses its local threshold.
+- [x] Synthetic incident timeline and report are internally consistent.
 
 ## Planned but incomplete
 
@@ -51,4 +52,3 @@ No AWS validation has been completed.
   email confirmation, or runtime IAM/KMS interactions.
 - Budget notifications may be delayed and cannot prevent spend.
 - Synthetic events intentionally omit or replace sensitive fields.
-

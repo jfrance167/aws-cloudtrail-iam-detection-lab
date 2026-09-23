@@ -40,7 +40,11 @@ jobs:
           python-version: "3.13"
 
       - name: Install pinned Bandit
-        run: python -m pip install --disable-pip-version-check bandit==1.8.6
+        run: python -m pip install --disable-pip-version-check bandit==1.9.4
 
       - name: Scan Python source
-        run: bandit --recursive scripts --severity-level medium --confidence-level medium
+        run: >-
+          bandit
+          --recursive scripts tests
+          --severity-level low
+          --confidence-level medium

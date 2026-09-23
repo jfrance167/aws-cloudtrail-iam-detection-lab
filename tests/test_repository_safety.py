@@ -6,6 +6,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TEXT_SUFFIXES = {".md", ".json", ".py", ".sql", ".tf", ".tfvars", ".yml", ".yaml", ".mmd"}
 IGNORED_NAMES = {".terraform.lock.hcl"}
+IGNORED_DIRECTORIES = {".terraform", ".tools", ".venv", "__pycache__"}
 
 REAL_ACCESS_KEY = re.compile(r"\b(?:AKIA|ASIA)[A-Z0-9]{16}\b")
 PRIVATE_KEY = re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----")
@@ -21,7 +22,7 @@ def text_files() -> list[Path]:
         if path.is_file()
         and path.suffix.lower() in TEXT_SUFFIXES
         and path.name not in IGNORED_NAMES
-        and ".terraform" not in path.parts
+        and not IGNORED_DIRECTORIES.intersection(path.parts)
     ]
 
 
@@ -68,4 +69,3 @@ class RepositorySafetyTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

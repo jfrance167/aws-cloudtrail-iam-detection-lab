@@ -2,11 +2,15 @@ name: SAST
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "**/*.py"
       - ".github/codeql/codeql-config.yml"
       - ".github/workflows/sast.yml"
   pull_request:
+    branches:
+      - main
     paths:
       - "**/*.py"
       - ".github/codeql/codeql-config.yml"

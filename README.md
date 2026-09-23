@@ -19,7 +19,7 @@ response, and portfolio-safe evidence handling in one defensive workflow.
 - KMS-encrypted SNS alerting and AWS Budget thresholds.
 - Synthetic CloudTrail fixtures, a dependency-free test harness, and a coherent
   incident investigation.
-- Credential-free CI, Checkov IaC scanning, and CodeQL SAST for the Python code.
+- Credential-free CI, Checkov IaC scanning, and CodeQL plus Bandit SAST for Python.
 
 ## Architecture
 
