@@ -14,7 +14,15 @@ named validation was actually completed; prose elsewhere must not override it.
 - [x] Checkov 3.3.19 reports 145 passed, 11 documented exceptions, and 0 failed checks.
 - [x] Bandit 1.9.4 reports zero findings across `scripts/` and `tests/`.
 - [x] All workflow YAML parses and receives a manual minimum-permission review.
-- [ ] CodeQL SAST completes in GitHub Actions.
+- [x] CodeQL SAST completes in GitHub Actions.
+
+## Completed GitHub validation
+
+- [x] CI passes on the default branch (unit, synthetic detection, Terraform, and Checkov jobs).
+- [x] Bandit passes on the default branch with zero findings.
+- [x] CodeQL analysis passes on the default branch.
+- [x] GitHub's code-scanning queue reports zero open alerts.
+- [x] GitHub Actions are pinned to immutable commit SHAs and use minimum permissions.
 
 ## Completed AWS validation
 
@@ -43,7 +51,6 @@ No AWS validation has been completed.
 - An approved AWS `terraform plan` using a sanitized variable file.
 - Live deployment and harmless restricted-role validation.
 - Captured and sanitized Terraform, Checkov, alert, and Athena evidence.
-- SAST execution in GitHub Actions after explicit GitHub-change approval.
 
 ## Known limitations
 
