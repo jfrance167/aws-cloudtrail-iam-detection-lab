@@ -4,17 +4,9 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "**/*.py"
-      - ".github/codeql/codeql-config.yml"
-      - ".github/workflows/sast.yml"
   pull_request:
     branches:
       - main
-    paths:
-      - "**/*.py"
-      - ".github/codeql/codeql-config.yml"
-      - ".github/workflows/sast.yml"
   schedule:
     - cron: "17 8 * * 1"
   workflow_dispatch:

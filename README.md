@@ -10,6 +10,20 @@ response, and portfolio-safe evidence handling in one defensive workflow.
 > timelines, and query results are clearly labeled synthetic. Review
 > [VALIDATION.md](VALIDATION.md) before interpreting any result.
 
+## Results at a glance
+
+- **Local validation:** 13 Python tests pass; all synthetic fixtures match their
+  expected detections; Terraform format, initialization, and validation pass;
+  Checkov reports 145 passed, 11 documented exceptions, and 0 failed checks.
+- **GitHub validation:** default-branch CI, Bandit, and CodeQL pass; the code
+  scanning queue has 0 open alerts.
+- **AWS deployment:** none. No AWS resources have been deployed, and no live
+  CloudTrail delivery, AWS alerts, SNS delivery, or Athena results have been
+  verified. The evidence in this repository is synthetic.
+
+See the detailed [validation record](VALIDATION.md) for tool versions,
+completed checks, and the remaining gated AWS steps.
+
 ## What I built
 
 - Reusable Terraform for an encrypted multi-Region CloudTrail pipeline.
