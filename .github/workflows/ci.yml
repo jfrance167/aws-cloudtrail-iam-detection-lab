@@ -2,19 +2,11 @@ name: CI
 
 on:
   push:
-    paths:
-      - "detections/**"
-      - "scripts/**"
-      - "terraform/**"
-      - "tests/**"
-      - ".github/workflows/ci.yml"
+    branches:
+      - main
   pull_request:
-    paths:
-      - "detections/**"
-      - "scripts/**"
-      - "terraform/**"
-      - "tests/**"
-      - ".github/workflows/ci.yml"
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:

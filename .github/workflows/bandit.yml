@@ -4,15 +4,9 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "**/*.py"
-      - ".github/workflows/bandit.yml"
   pull_request:
     branches:
       - main
-    paths:
-      - "**/*.py"
-      - ".github/workflows/bandit.yml"
   workflow_dispatch:
 
 permissions:
