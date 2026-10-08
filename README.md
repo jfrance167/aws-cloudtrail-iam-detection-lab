@@ -10,6 +10,14 @@ response, and portfolio-safe evidence handling in one defensive workflow.
 > timelines, and query results are clearly labeled synthetic. Review
 > [VALIDATION.md](VALIDATION.md) before interpreting any result.
 
+## Project overview
+
+| Focus | Evidence | Scope |
+| --- | --- | --- |
+| Design a cloud control-plane detection and investigation workflow | [Validation record](VALIDATION.md) · [Synthetic incident report](reports/sanitized-sample-incident-report.md) | Terraform and synthetic fixtures validated locally; AWS deployment remains unverified |
+
+Start with the architecture below, then inspect the detection catalog and validation record. Local matching does not establish live AWS delivery.
+
 ## Results at a glance
 
 - **Local validation:** 13 Python tests pass; all synthetic fixtures match their
@@ -167,3 +175,4 @@ information, or production resource names in this repository. See
 > CloudWatch, SNS, KMS, S3, and Athena; engineered five MITRE-mapped detections,
 > automated IaC/SAST testing, and produced a sanitized incident investigation
 > without using real credentials or destructive cloud activity.
+
