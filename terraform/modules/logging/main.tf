@@ -5,7 +5,7 @@ data "aws_region" "current" {}
 locals {
   account_id     = data.aws_caller_identity.current.account_id
   partition      = data.aws_partition.current.partition
-  region         = data.aws_region.current.name
+  region         = data.aws_region.current.region
   trail_name     = "${var.name_prefix}-trail"
   log_group_name = "/aws/cloudtrail/${var.name_prefix}"
   trail_arn      = "arn:${local.partition}:cloudtrail:${local.region}:${local.account_id}:trail/${local.trail_name}"
