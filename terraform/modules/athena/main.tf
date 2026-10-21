@@ -3,7 +3,7 @@ data "aws_region" "current" {}
 
 locals {
   account_id  = data.aws_caller_identity.current.account_id
-  region      = data.aws_region.current.name
+  region      = data.aws_region.current.region
   bucket_name = "${var.name_prefix}-athena-${substr(sha256(local.account_id), 0, 12)}-${local.region}"
   cloudtrail_columns = [
     { name = "eventversion", type = "string" },

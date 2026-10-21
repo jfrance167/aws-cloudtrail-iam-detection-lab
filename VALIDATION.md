@@ -10,7 +10,10 @@ named validation was actually completed; prose elsewhere must not override it.
 - [x] Repository safety tests find no prohibited credential material.
 - [x] `terraform fmt -check -recursive` passes.
 - [x] `terraform init -backend=false` completes.
-- [x] `terraform validate` passes with Terraform 1.13.3 and AWS provider 5.100.0.
+- [x] `terraform validate` passes with Terraform 1.13.3 and AWS provider 6.68.0.
+- [x] A real-provider Terraform test plans a fresh configuration with synthetic
+  identity overrides, fake credentials, and no AWS API calls or apply. This does
+  not validate migration of deployed state or replace an approved account plan.
 - [x] Checkov 3.3.19 reports 145 passed, 11 documented exceptions, and 0 failed checks.
 - [x] Bandit 1.9.4 reports zero findings across `scripts/` and `tests/`.
 - [x] All workflow YAML parses and receives a manual minimum-permission review.
